@@ -1,0 +1,18 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+
+<small>
+  {{ blog.date_created }}
+</small>
+<br>
+<b>
+  {{ blog.title }}
+</b>
+<div>
+  {{ blog.body |safe }}
+</div>
+
+<a href="{% url 'update_post' blog.id %}">Edit</a>
+
+{% endblock %}
