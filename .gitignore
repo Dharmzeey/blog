@@ -2,4 +2,4 @@ db.sqlite3
 .idea/
 __pycache__/
 venv/
-b608105d-0130-4a4b-b71a-466a2c8b436b
+.env
