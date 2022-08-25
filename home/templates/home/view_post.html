@@ -13,6 +13,8 @@
   {{ blog.body |safe }}
 </div>
 
+{% if user.is_authenticated %}
 <a href="{% url 'update_post' blog.id %}">Edit</a>
+{% endif %}
 
 {% endblock %}

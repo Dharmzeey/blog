@@ -7,7 +7,7 @@ from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 
 # Create your views here.
 
-class HomeView(LoginRequiredMixin, View):
+class HomeView(View):
   template_name = "home/index.html"
   def get(self, request):
     posts = Blog.objects.all()
@@ -29,7 +29,7 @@ class CreatePost(LoginRequiredMixin, CreateView):
     return super().form_valid(form)
 create_post = CreatePost.as_view()
 
-class ReadPost(LoginRequiredMixin, DetailView):
+class ReadPost(DetailView):
   model = Blog
   template_name = "home/view_post.html"
 read_post = ReadPost.as_view()
