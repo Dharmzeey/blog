@@ -22,4 +22,4 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 django_heroku.settings(locals())
 
 if __name__ == "__main__":
-    main()
+    main() 
