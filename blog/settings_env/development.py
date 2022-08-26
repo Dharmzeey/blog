@@ -1,16 +1,7 @@
-from blog.settings import *
+# # from blog.settings import *
 
-def main():
-    DEBUG = True
+# def main():
 
-ALLOWED_HOSTS = ["localhost"]
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
-
-if __name__ == "__main__":
-    main()
+# if __name__ == "__main__":
+#     main()

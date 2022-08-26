@@ -113,8 +113,43 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 try:
     if os.environ['blog']  == 'production':
-        from .settings_env.production import *
+        print("1")
+        ALLOWED_HOSTS = ["https://dharmzeeyblog.herokuapp.com"]
+
+        DEBUG = config('DEBUG', cast=bool)
+
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                'NAME': config('DB_NAME'),
+                'USER': config('DB_USER'),
+                'PASSWORD': config('DB_PASSWORD'),
+                'HOST': config('DB_HOST'),
+                'PORT': ''
+            }
+        }
     else:
-        from .settings_env.development import *
+        DEBUG = True
+        print("44")
+
+        ALLOWED_HOSTS = ["localhost"]
+
+        DATABASES = {
+            "default": {
+                "ENGINE": "django.db.backends.sqlite3",
+                "NAME": BASE_DIR / "db.sqlite3",
+            }
+        }
+        print("3")
 except:
-    from .settings_env.development import *
+    DEBUG = True
+    print("44")
+
+    ALLOWED_HOSTS = ["localhost"]
+
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
