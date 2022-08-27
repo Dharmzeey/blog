@@ -129,6 +129,8 @@ try:
             }
         }
 except:
+    pass
+else:
     DEBUG = True
     print("44")
 
