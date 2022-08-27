@@ -128,19 +128,6 @@ try:
                 'PORT': ''
             }
         }
-    else:
-        DEBUG = True
-        print("44")
-
-        ALLOWED_HOSTS = ["localhost"]
-
-        DATABASES = {
-            "default": {
-                "ENGINE": "django.db.backends.sqlite3",
-                "NAME": BASE_DIR / "db.sqlite3",
-            }
-        }
-        print("3")
 except:
     DEBUG = True
     print("44")
