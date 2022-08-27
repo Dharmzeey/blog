@@ -51,6 +51,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "blog.urls"
@@ -109,6 +111,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 try:
@@ -117,17 +120,26 @@ try:
         ALLOWED_HOSTS = ["https://dharmzeeyblog.herokuapp.com"]
 
         DEBUG = config('DEBUG', cast=bool)
-
+        
         DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.postgresql_psycopg2',
-                'NAME': config('DB_NAME'),
-                'USER': config('DB_USER'),
-                'PASSWORD': config('DB_PASSWORD'),
-                'HOST': config('DB_HOST'),
-                'PORT': ''
-            }
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
         }
+    }
+
+        # DATABASES = {
+        #     'default': {
+        #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        #         'NAME': config('DB_NAME'),
+        #         'USER': config('DB_USER'),
+        #         'PASSWORD': config('DB_PASSWORD'),
+        #         'HOST': config('DB_HOST'),
+        #         'PORT': ''
+        #     }
+        # }
+        # db_from_env = dj_database_url.config(conn_max_age=600)
+        # DATABASES['default'].update(db_from_env)
 except:
     pass
 else:
